@@ -1,0 +1,6 @@
+*.pyc
+.*.swp
+rsp
+src/*.o
+src/rsp
+luajit-2.0

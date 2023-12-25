@@ -14,7 +14,7 @@ import Showtime from './pages/Showtime'
 import Tickets from './pages/Tickets'
 import User from './pages/User'
 
-axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL || 'http://localhost:8080'
+axios.defaults.baseURL = 'http://localhost:5050'
 axios.defaults.withCredentials = true
 
 function App() {
