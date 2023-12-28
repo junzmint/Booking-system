@@ -96,18 +96,18 @@ const Theater = ({
           headers: {
             Authorization: `Bearer ${auth.token}`,
           },
-        }
+        },
       );
       // console.log(response.data)
       fetchTheater();
       if (data.autoIncrease) {
         const movieLength = movies.find(
-          (movie) => movie._id === data.movie
+          (movie) => movie._id === data.movie,
         ).length;
         const [GapHours, GapMinutes] = data.gap.split(":").map(Number);
         const nextShowtime = new Date(
           showtime.getTime() +
-            (movieLength + GapHours * 60 + GapMinutes) * 60000
+            (movieLength + GapHours * 60 + GapMinutes) * 60000,
         );
         if (data.rounding5 || data.rounding10) {
           const totalMinutes =
@@ -124,15 +124,15 @@ const Theater = ({
           setValue(
             "showtime",
             `${String(roundedHours).padStart(2, "0")}:${String(
-              remainderMinutes
-            ).padStart(2, "0")}`
+              remainderMinutes,
+            ).padStart(2, "0")}`,
           );
         } else {
           setValue(
             "showtime",
             `${String(nextShowtime.getHours()).padStart(2, "0")}:${String(
-              nextShowtime.getMinutes()
-            ).padStart(2, "0")}`
+              nextShowtime.getMinutes(),
+            ).padStart(2, "0")}`,
           );
         }
         if (data.autoIncreaseDate) {
@@ -176,7 +176,8 @@ const Theater = ({
         <h3
           className={`flex w-fit items-center rounded-tl-2xl bg-gradient-to-br from-gray-800 to-gray-700 px-6 py-0.5 text-2xl font-bold text-white md:rounded-t-2xl md:px-8 ${
             auth.role !== "admin" && "rounded-t-2xl"
-          }`}>
+          }`}
+        >
           {theater.number}
         </h3>
         {auth.role === "admin" && (
@@ -212,7 +213,8 @@ const Theater = ({
           <>
             <form
               className="mx-4 flex flex-col gap-x-4 gap-y-2 lg:flex-row"
-              onSubmit={handleSubmit(onAddShowtime)}>
+              onSubmit={handleSubmit(onAddShowtime)}
+            >
               <div className="flex grow flex-col gap-2 rounded-lg">
                 <div className="flex flex-col gap-2 rounded-lg lg:flex-row lg:items-stretch">
                   <div className="flex grow-[2] items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
@@ -278,7 +280,8 @@ const Theater = ({
                     </p>
                     <label
                       className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                      title="After add, update showtime value to the movie ending time">
+                      title="After add, update showtime value to the movie ending time"
+                    >
                       Showtime:
                       <input
                         type="checkbox"
@@ -288,7 +291,8 @@ const Theater = ({
                     </label>
                     <label
                       className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                      title="After add, update date value to the movie ending time">
+                      title="After add, update date value to the movie ending time"
+                    >
                       Date:
                       <input
                         type="checkbox"
@@ -316,7 +320,8 @@ const Theater = ({
                     </p>
                     <label
                       className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                      title="Rounding up to the nearest five minutes">
+                      title="Rounding up to the nearest five minutes"
+                    >
                       5-min:
                       <input
                         type="checkbox"
@@ -329,7 +334,8 @@ const Theater = ({
                     </label>
                     <label
                       className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                      title="Rounding up to the nearest ten minutes">
+                      title="Rounding up to the nearest ten minutes"
+                    >
                       10-min:
                       <input
                         type="checkbox"
@@ -347,7 +353,8 @@ const Theater = ({
                 title="Add showtime"
                 disabled={isAddingShowtime}
                 className="whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-blue-500 px-2 py-1 font-medium text-white drop-shadow-md hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
-                type="submit">
+                type="submit"
+              >
                 ADD +
               </button>
             </form>

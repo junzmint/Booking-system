@@ -24,10 +24,10 @@ const Schedule = () => {
   const [selectedDate, setSelectedDate] = useState(
     (sessionStorage.getItem("selectedDate") &&
       new Date(sessionStorage.getItem("selectedDate"))) ||
-      new Date()
+      new Date(),
   );
   const [selectedCinemaIndex, setSelectedCinemaIndex] = useState(
-    parseInt(sessionStorage.getItem("selectedCinemaIndex")) || 0
+    parseInt(sessionStorage.getItem("selectedCinemaIndex")) || 0,
   );
   const [cinemas, setCinemas] = useState([]);
   const [isFetchingCinemas, setIsFetchingCinemas] = useState(true);
@@ -108,18 +108,18 @@ const Schedule = () => {
           headers: {
             Authorization: `Bearer ${auth.token}`,
           },
-        }
+        },
       );
       // console.log(response.data)
       fetchCinemas();
       if (data.autoIncrease) {
         const movieLength = movies.find(
-          (movie) => movie._id === data.movie
+          (movie) => movie._id === data.movie,
         ).length;
         const [GapHours, GapMinutes] = data.gap.split(":").map(Number);
         const nextShowtime = new Date(
           showtime.getTime() +
-            (movieLength + GapHours * 60 + GapMinutes) * 60000
+            (movieLength + GapHours * 60 + GapMinutes) * 60000,
         );
         if (data.rounding5 || data.rounding10) {
           const totalMinutes =
@@ -136,15 +136,15 @@ const Schedule = () => {
           setValue(
             "showtime",
             `${String(roundedHours).padStart(2, "0")}:${String(
-              remainderMinutes
-            ).padStart(2, "0")}`
+              remainderMinutes,
+            ).padStart(2, "0")}`,
           );
         } else {
           setValue(
             "showtime",
             `${String(nextShowtime.getHours()).padStart(2, "0")}:${String(
-              nextShowtime.getMinutes()
-            ).padStart(2, "0")}`
+              nextShowtime.getMinutes(),
+            ).padStart(2, "0")}`,
           );
         }
         if (data.autoIncreaseDate) {
@@ -193,7 +193,8 @@ const Schedule = () => {
             {auth.role === "admin" && (
               <form
                 className="flex flex-col lg:flex-row gap-4 rounded-md bg-gradient-to-br from-indigo-100 to-white p-4"
-                onSubmit={handleSubmit(onAddShowtime)}>
+                onSubmit={handleSubmit(onAddShowtime)}
+              >
                 <div className="flex grow flex-col gap-2 rounded-lg">
                   <div className="flex flex-col gap-2 rounded-lg lg:flex-row lg:items-stretch">
                     <div className="flex grow items-center gap-x-2 gap-y-1 lg:flex-col lg:items-start">
@@ -203,7 +204,8 @@ const Schedule = () => {
                       <select
                         className="h-9 w-full rounded bg-white px-2 py-1 font-semibold text-gray-900 drop-shadow-sm"
                         required
-                        {...register("theater", { required: true })}>
+                        {...register("theater", { required: true })}
+                      >
                         <option value="" defaultValue>
                           Choose a theater
                         </option>
@@ -214,7 +216,7 @@ const Schedule = () => {
                                 {theater.number}
                               </option>
                             );
-                          }
+                          },
                         )}
                       </select>
                     </div>
@@ -281,7 +283,8 @@ const Schedule = () => {
                       </p>
                       <label
                         className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                        title="After add, update showtime value to the movie ending time">
+                        title="After add, update showtime value to the movie ending time"
+                      >
                         Showtime:
                         <input
                           type="checkbox"
@@ -291,7 +294,8 @@ const Schedule = () => {
                       </label>
                       <label
                         className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                        title="After add, update date value to the movie ending time">
+                        title="After add, update date value to the movie ending time"
+                      >
                         Date:
                         <input
                           type="checkbox"
@@ -319,7 +323,8 @@ const Schedule = () => {
                       </p>
                       <label
                         className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                        title="Rounding up to the nearest five minutes">
+                        title="Rounding up to the nearest five minutes"
+                      >
                         5-min:
                         <input
                           type="checkbox"
@@ -332,7 +337,8 @@ const Schedule = () => {
                       </label>
                       <label
                         className="flex items-center gap-x-2 gap-y-1 whitespace-nowrap font-semibold leading-5 lg:flex-col lg:items-start"
-                        title="Rounding up to the nearest ten minutes">
+                        title="Rounding up to the nearest ten minutes"
+                      >
                         10-min:
                         <input
                           type="checkbox"
@@ -350,7 +356,8 @@ const Schedule = () => {
                   title="Add showtime"
                   disabled={isAddingShowtime}
                   className="whitespace-nowrap rounded-md bg-gradient-to-r from-indigo-600 to-blue-500 px-2 py-1 font-medium text-white drop-shadow-md hover:from-indigo-500 hover:to-blue-400 disabled:from-slate-500 disabled:to-slate-400"
-                  type="submit">
+                  type="submit"
+                >
                   ADD +
                 </button>
               </form>
