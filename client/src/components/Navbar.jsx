@@ -89,6 +89,19 @@ const Navbar = () => {
               <p>Ticket</p>
             </Link>
           )}
+          {auth.role !== "admin" && (
+            <Link
+              to={"/searchUser"}
+              className={`flex items-center justify-center gap-2 rounded-md px-2 py-1 text-white hover:bg-gray-500 ${
+                window.location.pathname === "/searchUser"
+                  ? "bg-gradient-to-br from-indigo-800 to-blue-700"
+                  : "bg-gray-600"
+              }`}
+            >
+              <MagnifyingGlassIcon className="h-6 w-6" />
+              <p>Search</p>
+            </Link>
+          )}
           {auth.role === "admin" && (
             <>
               <Link

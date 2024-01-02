@@ -13,6 +13,7 @@ import Search from "./pages/Search";
 import Showtime from "./pages/Showtime";
 import Tickets from "./pages/Tickets";
 import User from "./pages/User";
+import SearchUser from "./pages/SearchUser";
 
 axios.defaults.baseURL =
   import.meta.env.VITE_BACKEND_URL || "http://localhost:5050";
@@ -47,6 +48,7 @@ function App() {
         <Route path="/purchase/:id" element={<Purchase />} />
         <Route path="/ticket" element={<Tickets />} />
         <Route path="/schedule" element={<Schedule />} />
+        <Route path="/searchuser" element={<SearchUser />} />
         <Route
           path="/user"
           element={
