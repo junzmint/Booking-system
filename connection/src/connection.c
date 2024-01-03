@@ -106,7 +106,7 @@ void connection_on_out_event(struct epoll_event_handler *self)
                 inet_ntop(AF_INET6, &s->sin6_addr, ipstr, sizeof ipstr);
             }
 
-            printf("WRITTEN %d bytes to client %s:%d - Data: %.*s\n", written, ipstr, port, written, closure->write_buffer->data + closure->write_buffer->current_offset);
+            printf("WRITTEN %d bytes to client %s:%d - Data: %.*s\n\n", written, ipstr, port, written, closure->write_buffer->data + closure->write_buffer->current_offset);
         }
 
         if (written != to_write)
@@ -175,7 +175,7 @@ void connection_on_in_event(struct epoll_event_handler *self)
                 inet_ntop(AF_INET6, &s->sin6_addr, ipstr, sizeof ipstr);
             }
 
-            printf("READ %d bytes from client %s:%d - Data: %.*s\n", bytes_read, ipstr, port, bytes_read, read_buffer);
+            printf("READED %d bytes from client %s:%d - Data: %.*s\n\n", bytes_read, ipstr, port, bytes_read, read_buffer);
         }
         else if (bytes_read == -1 && (errno == EAGAIN || errno == EWOULDBLOCK))
         {
@@ -269,7 +269,7 @@ void connection_write(struct epoll_event_handler *self, char *data, int len)
                 inet_ntop(AF_INET6, &s->sin6_addr, ipstr, sizeof ipstr);
             }
 
-            printf("WRITTEN %d bytes to client %s:%d - Data: %.*s\n", written, ipstr, port, written, data);
+            printf("WRITTEN %d bytes to client %s:%d - Data: %.*s\n\n", written, ipstr, port, written, data);
         }
 
         if (written == len)

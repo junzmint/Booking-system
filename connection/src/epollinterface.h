@@ -21,6 +21,7 @@ extern void epoll_init();
 // Add a file descriptor and an associated structure to an epoll FD
 extern void epoll_add_handler(struct epoll_event_handler *handler, uint32_t event_mask);
 
+// Delete a file descriptor and an associated structure out of an epoll FD
 extern void epoll_remove_handler(struct epoll_event_handler *handler);
 
 // Store and manage blocks of memory that are no longer in use, potentially for reuse later
