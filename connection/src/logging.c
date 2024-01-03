@@ -6,8 +6,7 @@
 #include <time.h>
 #include <sys/time.h>
 
-
-void rsp_log(char* format, ...)
+void rsp_log(char *format, ...)
 {
     char without_ms[64];
     char with_ms[64];
@@ -19,7 +18,7 @@ void rsp_log(char* format, ...)
     {
         strftime(without_ms, sizeof(without_ms), "%Y-%m-%d %H:%M:%S.%%06u %z", tm);
         snprintf(with_ms, sizeof(with_ms), without_ms, tv.tv_usec);
-        fprintf(stdout, "[%s] ", with_ms); 
+        fprintf(stdout, "[%s] ", with_ms);
     }
 
     va_list argptr;
@@ -32,10 +31,8 @@ void rsp_log(char* format, ...)
     fflush(stdout);
 }
 
-
-void rsp_log_error(char* message)
-{
-    char* error = strerror(errno);
+void rsp_log_error(char *message)
+{ 
+    char *error = strerror(errno);
     rsp_log("%s: %s", message, error);
 }
-
