@@ -14,3 +14,6 @@ cd src
 ./rsp {path to the .lua config file}
 ```
 You need to run "rsp" twice because you need to connect to both ReactJS and NodeJS serve
+
+# Reference
+https://www.gilesthomas.com/2013/08/writing-a-reverse-proxyloadbalancer-from-the-ground-up-in-c-part-1
